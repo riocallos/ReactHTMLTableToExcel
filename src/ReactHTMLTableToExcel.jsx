@@ -3,18 +3,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  table: PropTypes.string.isRequired,
-  filename: PropTypes.string.isRequired,
-  sheet: PropTypes.string.isRequired,
-  id: PropTypes.string,
-  className: PropTypes.string,
-  buttonText: PropTypes.string,
+    table: PropTypes.string.isRequired,
+    filename: PropTypes.string.isRequired,
+    sheet: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    className: PropTypes.string,
+    buttonLabel: PropTypes.oneOfType([
+        // Can be either a text or some JSX like an icon
+        PropTypes.string,
+        PropTypes.object,
+    ]),
+    buttonComponent: PropTypes.oneOfType([
+        // Can be either a text (e.g. 'button') or a React Component
+        PropTypes.string,
+        PropTypes.func,
+    ]),
 };
 
 const defaultProps = {
-  id: 'button-download-as-xls',
-  className: 'button-download',
-  buttonText: 'Download',
+    id: "button-download-as-xls",
+    className: "button-download",
+    buttonLabel: "Download",
+    buttonComponent: "button",
 };
 
 class ReactHTMLTableToExcel extends Component {
@@ -93,14 +103,14 @@ class ReactHTMLTableToExcel extends Component {
 
   render() {
     return (
-      <button
-        id={this.props.id}
-        className={this.props.className}
-        type="button"
-        onClick={this.handleDownload}
+      <RenderedButton
+          id={this.props.id}
+          className={this.props.className}
+          type="button"
+          onClick={this.handleDownload}
       >
-        {this.props.buttonText}
-      </button>
+          {this.props.buttonLabel}
+      </RenderedButton>
     );
   }
 }

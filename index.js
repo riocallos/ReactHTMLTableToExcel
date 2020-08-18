@@ -24,18 +24,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var propTypes = {
-  table: _propTypes2.default.string.isRequired,
-  filename: _propTypes2.default.string.isRequired,
-  sheet: _propTypes2.default.string.isRequired,
-  id: _propTypes2.default.string,
-  className: _propTypes2.default.string,
-  buttonText: _propTypes2.default.string
+    table: _propTypes2.default.string.isRequired,
+    filename: _propTypes2.default.string.isRequired,
+    sheet: _propTypes2.default.string.isRequired,
+    id: _propTypes2.default.string,
+    className: _propTypes2.default.string,
+    buttonLabel: _propTypes2.default.oneOfType([
+        // Can be either a text or a component like an icon
+        _propTypes2.default.string,
+        _propTypes2.default.object,
+    ]),
+    buttonComponent: _propTypes2.default.func,
 };
 
 var defaultProps = {
-  id: 'button-download-as-xls',
-  className: 'button-download',
-  buttonText: 'Download'
+    id: "button-download-as-xls",
+    className: "button-download",
+    buttonLabel: "Download",
+    buttonComponent: "button",
 };
 
 var ReactHTMLTableToExcel = function (_Component) {
@@ -105,14 +111,20 @@ var ReactHTMLTableToExcel = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'button',
-        {
-          id: this.props.id,
-          className: this.props.className,
-          type: 'button',
-          onClick: this.handleDownload
-        },
-        this.props.buttonText
+          RenderedButton,
+          {
+              id: this.props.id,
+              className: this.props.className,
+              type: "button",
+              onClick: this.handleDownload,
+          },
+          {
+              id: this.props.id,
+              className: this.props.className,
+              type: "button",
+              onClick: this.handleDownload,
+          },
+          this.props.buttonLabel
       );
     }
   }], [{
