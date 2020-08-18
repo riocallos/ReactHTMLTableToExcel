@@ -16,7 +16,7 @@ const propTypes = {
     buttonComponent: PropTypes.oneOfType([
         // Can be either a text (e.g. 'button') or a React Component
         PropTypes.string,
-        PropTypes.func,
+        PropTypes.object,
     ]),
 };
 
