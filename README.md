@@ -34,13 +34,13 @@ Property | Type | Default | Description
 **sheet** | *string* | - | Name of Excel sheet.
 **id** | *string* | "button-download-as-xls" | ID attribute of button element.
 **className** | *string* | "button-download" | Class attribute of button element.
-**buttonText** | *string | object* | "Download" | Button label.
-**buttonComponent** | *object* | button | React component to use as button
+**buttonText** | *string / object* | "Download" | Button label.
+**buttonComponent** | *string / function* | "button" | React component to use as button
 
 
 ## Example
 
-```javascript
+```jsx
 import React, {Component} from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
