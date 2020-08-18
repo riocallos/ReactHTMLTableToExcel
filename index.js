@@ -37,7 +37,7 @@ var propTypes = {
     buttonComponent: _propTypes2.default.oneOfType([
         // Can be either a text (e.g. 'button') or a React Component
         _propTypes2.default.string,
-        _propTypes2.default.func,
+        _propTypes2.default.object,
     ]),
 };
 
